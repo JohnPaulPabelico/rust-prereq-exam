@@ -1,5 +1,3 @@
-JP PABELICO TEST
-
 # rust-prereq-exam
 
 ## instructions
