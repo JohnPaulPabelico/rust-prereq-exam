@@ -5,7 +5,7 @@
 // - b: The second integer operand.
 // Returns: The sum of the two operands.
 pub fn add(a: i32, b: i32) -> i32 {
-    todo!("Implement add function for this test.")
+    a + b
 }
 
 // Function: subtract
@@ -15,7 +15,7 @@ pub fn add(a: i32, b: i32) -> i32 {
 // - b: The integer to subtract.
 // Returns: The result of the subtraction.
 pub fn subtract(a: i32, b: i32) -> i32 {
-    todo!("Implement subtract function for this test.")
+    a - b
 }
 
 // Function: multiply
@@ -25,7 +25,7 @@ pub fn subtract(a: i32, b: i32) -> i32 {
 // - b: The second integer operand.
 // Returns: The product of the two operands.
 pub fn multiply(a: i32, b: i32) -> i32 {
-    todo!("Implement multiply function for this test.")
+    a * b
 }
 
 // Function: divide
@@ -35,7 +35,7 @@ pub fn multiply(a: i32, b: i32) -> i32 {
 // - b: The divisor.
 // Returns: The result of the division as a float.
 pub fn divide(a: i32, b: i32) -> f32 {
-    todo!("Implement divide function for this test.")
+    (a / b) as f32
 }
 
 // Function: modulus
@@ -45,7 +45,7 @@ pub fn divide(a: i32, b: i32) -> f32 {
 // - b: The divisor.
 // Returns: The modulus of the division operation.
 pub fn modulus(a: i32, b: i32) -> i32 {
-    todo!("Implement modulus function for this test.")
+    a % b
 }
 
 

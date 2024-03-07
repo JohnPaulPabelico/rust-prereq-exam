@@ -4,8 +4,16 @@
 // - input: A vector of strings.
 // Returns: True if the last two strings in the vector start with `BLOKC`, false otherwise.
 pub fn pattern_1(input: Vec<String>) -> bool {
-    todo!("Returns true if the last two strings in the vector start with `BLOKC`.");
+    if input.len() < 2 {
+        return false;
+    }
+    
+    let second_last = &input[input.len() - 2];
+    let last = &input[input.len() - 1];
+    
+    return second_last.starts_with("BLOKC") && last.starts_with("BLOKC");
 }
+
 
 // Function: pattern_2
 // Description: Returns true if the first and last string in the vector start with `BLOKC`.
