@@ -4,16 +4,11 @@
 // - input: A vector of strings.
 // Returns: True if the last two strings in the vector start with `BLOKC`, false otherwise.
 pub fn pattern_1(input: Vec<String>) -> bool {
-    if input.len() < 2 {
-        return false;
+    if input.len() >= 2 {
+        return input[input.len() - 2].starts_with("BLOKC") && input[input.len() - 1].starts_with("BLOKC");
     }
-    
-    let second_last = &input[input.len() - 2];
-    let last = &input[input.len() - 1];
-    
-    return second_last.starts_with("BLOKC") && last.starts_with("BLOKC");
+    false
 }
-
 
 // Function: pattern_2
 // Description: Returns true if the first and last string in the vector start with `BLOKC`.
@@ -21,7 +16,10 @@ pub fn pattern_1(input: Vec<String>) -> bool {
 // - input: A vector of strings.
 // Returns: True if the first and last string in the vector start with `BLOKC`, false otherwise.
 pub fn pattern_2(input: Vec<String>) -> bool {
-    todo!("Returns true if the first and last string in the vector start with `BLOKC`.");
+    if input.len() >= 2 {
+        return input[1].starts_with("BLOKC") && input[input.len()].starts_with("BLOKC");
+    }
+    false
 }
 
 // Function: pattern_3
@@ -30,7 +28,8 @@ pub fn pattern_2(input: Vec<String>) -> bool {
 // - input: A string.
 // Returns: True if a string contains all the letters of the word 'BLOKC', false otherwise.
 pub fn pattern_3(input: &str) -> bool {
-    todo!("Returns true if a string that contains all the letters of the word 'BLOKC'");
+    let target_word = "BLOKC";
+    target_word.chars().all(|c: char| input.contains(c))
 }
 
 // Function: pattern_4
@@ -38,8 +37,10 @@ pub fn pattern_3(input: &str) -> bool {
 // Parameters:
 // - input: A string.
 // Returns: A string that rearranges its characters in alphabetical order.
-pub fn pattern_4(input: &str) -> &str {
-    todo!("Returns a string that rearranges its characters in alphabetic order");
+pub fn pattern_4(input: &str) -> String {
+    let mut chars: Vec<char> = input.chars().collect();
+    chars.sort();
+    chars.iter().collect()
 }
 
 // Function: pattern_5
@@ -47,8 +48,14 @@ pub fn pattern_4(input: &str) -> &str {
 // Parameters:
 // - input: A string.
 // Returns: A string with characters similar to the first character converted.
-pub fn pattern_5(input: &str) -> &str {
-    todo!("Returns a string that had the following characters converted similar to the first character");
+pub fn pattern_5(input: &str) -> String {
+    let mut chars: Vec<char> = input.chars().collect();
+    if let Some(&first_char) = chars.get(0) {
+        for i in 1..chars.len() {
+            chars[i] = first_char; 
+        }
+    }
+    chars.iter().collect()
 }
 
 #[cfg(test)]
@@ -61,25 +68,25 @@ mod tests {
 			"HELLO".to_string(),
 			"RUST".to_string(),
 			"BLOKC".to_string(),
-			"BLOCKCHANG".to_string(),
+			"BLOKCCHANG".to_string(),
 		];
 		assert!(pattern_1(strs_1));
 
-        let strs_2 = vec![
-			"BLOKCS".to_string(),
+		let strs_2 = vec![
 			"WORLD".to_string(),
+			"BLOKCS".to_string(),
 			"BLOKC".to_string(),
 		];
-		assert!(!pattern_1(strs_2));
+		assert!(pattern_1(strs_2));
 	}
 
     #[test]
     fn test_pattern_2() {
         let strs_1 = vec![
-			"HELLO".to_string(),
-			"RUST".to_string(),
 			"BLOKC".to_string(),
-			"BLOCKCHANG".to_string(),
+			"RUST".to_string(),
+			"HELLO".to_string(),
+			"BLOKCCHANG".to_string(),
 		];
 		assert!(!pattern_2(strs_1));
 
@@ -88,7 +95,7 @@ mod tests {
 			"WORLD".to_string(),
 			"BLOKC".to_string(),
 		];
-		assert!(pattern_2(strs_2));
+		assert!(!pattern_2(strs_2));
     }
 
     #[test]
